@@ -1,0 +1,23 @@
+======='Remplacer tous les accents=======
+
+Function MajSansAccent$(ByVal Chaine$)
+'Ti
+Const VAccent = "àáâãäåéêëèìíîïðòóôõöùúûü", VSsAccent = "aaaaaaeeeeiiiioooooouuuu" 'Remplace la chaine de caractère par une autre
+Dim Bcle& ' Déclaration de variable
+If Len(Chaine) > 0 Then ' Si rien du tout
+For Bcle = 1 To Len(VAccent)
+Chaine = Replace(Chaine, Mid(VAccent, Bcle, 1), Mid(VSsAccent, Bcle, 1))
+Next Bcle
+MajSansAccent = Chaine
+End If
+End Function
+
+Sub EnleveAccent()
+Application.ScreenUpdating = False
+Dim c As Range
+For Each c In Range("A1:I8000")
+c = MajSansAccent(c)
+Next c
+End Sub
+
+==========================================
